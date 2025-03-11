@@ -57,7 +57,7 @@ function enableGyroscopeSound() {
     if (gyroscopeSound) {
         document.addEventListener("click", () => {
             console.log("Playing Gyroscope sound...");
-            gyroscopeSound.volume = 0.3;
+            gyroscopeSound.volume = 0.2;
             gyroscopeSound.play().catch(error => console.warn("Gyroscope sound blocked:", error));
         }, { once: true });
     }
@@ -160,7 +160,8 @@ function triggerPageEffects() {
 
         case "rumble":
             playSound("rumbleSound", 1.0);
-            
+            setTimeout(() => fadeToBlack(4)); 
+            playSound("breathingSound,")
             gsap.to(".content", {
                 x: "-10px",  // Increase the shake intensity
                 duration: 0.1,  // Each shake happens faster
@@ -190,6 +191,31 @@ function triggerPageEffects() {
                 ease: "power1.out"
             });
             break;
+
+        case "throw":
+            playSound("throwSound", 1.0);
+            
+            gsap.to(".content", {
+                x: "-10px",  // Increase the shake intensity
+                duration: 0.1,  // Each shake happens faster
+                repeat: 30,  // Increase number of shakes
+                yoyo: true,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    console.log("🎭 Triggering fade to black after shaking!");
+                    setTimeout(() => fadeToBlack(4)); // Add a small delay before fading
+                }
+            });
+            
+            
+                if (gyroscopeSound) {
+                    gsap.to(gyroscopeSound, { volume: 0, duration: 2, onComplete: () => gyroscopeSound.pause() });
+                    console.log("🔇 Fading out gyroscope sound...");
+                }
+                break;
+            
+            
+    
 
         default:
             console.log("No page-specific effects for this page.");
@@ -253,3 +279,58 @@ function attachEventListeners() {
 
 // INITIALIZE EVERYTHING ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", attachEventListeners);
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log('event found');
+    const blurredText = document.getElementById("blurred-text");
+    const inputBox = document.getElementById("input-box");
+
+    // ✅ Handle input changes and adjust blur effect
+    inputBox.addEventListener("input", () => {
+        const userInput = inputBox.value.trim().toLowerCase();
+        const correctText = "me vivere vita mea";
+        
+        // Adjust blur effect dynamically
+        let blurAmount = 10 - (userInput.length / correctText.length) * 10;
+        blurredText.style.filter = `blur(${Math.max(blurAmount, 0)}px)`;
+    });
+
+    // ✅ Handle Enter key submission
+    inputBox.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            console.log('enter key pressed');
+            event.preventDefault();
+            validateInput();
+        }
+    });
+
+    function validateInput() {
+        const userInput = inputBox.value.trim().toLowerCase();
+        const correctText = "me vivere vita mea";
+
+        if (userInput === correctText) {
+            window.location.href = "l8correct.html";
+        } else {
+            window.location.href = "l8incorrect.html";
+        }
+    }
+
+    // ✅ Restore blur if they stop typing
+    inputBox.addEventListener("blur", () => {
+        blurredText.style.filter = "blur(10px)";
+    });
+
+    // ✅ Keep AJAX Effects for Page Transitions
+    document.querySelectorAll('.ajax-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            let targetPage = this.getAttribute('href');
+
+            gsap.to(".content", {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => loadPage(targetPage)
+            });
+        });
+    });
+});

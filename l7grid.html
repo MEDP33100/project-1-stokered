@@ -7,28 +7,26 @@
   <title>Catacombs</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
+
+  <!-- ✅ Flickering Overlay -->
   <div class="flicker-overlay"></div> 
 
-  <div class="content">
-    <div class="grid">
-      <!-- JS needed here -->
-      <p>
-        Put the interactive grid that matches the note found in the bottle.
-        The user must tap the identical pattern as the paper to escape.
-        If you have time, insert a feature that allows the user to double-check the paper.
-      </p>
+  <!-- ✅ Main Content -->
+  <div class="content" id="main-content">
 
-      <!-- placeholder grid -->
-      <div id="interactive-grid">
-      </div>
-    </div>
+    <!-- ✅ Type-to-Reveal Puzzle -->
+    <h1>You must speak the words that were on the note...</h1>
+    <p id="blurred-text">me vivere vita mea</p>
+    <input type="text" id="input-box" placeholder="Type here...">
 
-    <!-- no buttons, event has to be triggered by a correct or incorrect entry -->
+    <!-- ✅ Audio for Click Sound -->
+    <audio id="click-sound" src="assets/stone.mp3" preload="auto"></audio>
 
-    <!-- below is for testing purposes -->
+    <!-- ✅ Debugging Buttons (For Testing Purposes) -->
     <div class="leftbtn">
       <a href="l8correct.html" class="ajax-link">
         <button>Correct</button>
@@ -40,7 +38,9 @@
         <button>Incorrect</button>
       </a>
     </div>
-  </div>
+
+  </div> <!-- End of .content -->
+
 </body>
 
 </html>

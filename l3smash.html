@@ -12,30 +12,21 @@
 <body>
   <div class="flicker-overlay"></div> 
 
-  <div class="content">
+  <div class="content" data-event="throw">
     <div class="text">
-      You're thirsty, claustrophobic, and scared. The last thing 
-      you want to do is sit in this dark cavern and scrape two 
-      stones together. You're just going to throw it and hope for the best.
+      You throw the stone at the wall and it shatters immediately.
+        <br>
+        You see tiny fragments of glass as a piece of paper falls into the water. 
+        It disintegrates almost immediately.
+        <br>
+        You pace back and forth, hours turn into days.
+        Out of desperation, you drink the murky water.
+        You wait for help to come.
+        It never does.
+      <audio id="throwSound" src="assets/throw.mp3"></audio>
+      <audio id="breathingSound" src="assets/breathing.mp3"></audio>
     </div>
-
-    <div class="throw">
-      <button id="throwButton">THROW</button>
-    </div>
-
-    <div class="text" id="throwOutcome" style="display: none;">
-      The stone shatters, and you see tiny fragments of glass as a piece
-      of paper falls into the water. You reach for it, but it 
-      disintegrates almost immediately.
-
-      You walk back and forth, back and forth endlessly, until you can 
-      no longer tell the difference between right and left.
-
-      Hours or days or weeks later, you drink the murky water out of desperation.
-      You wait for help to come.
-      It never does.
-    </div>
-
+    
     <!-- add skull animation and "final" sound effect -->
     <div class="solebtn">
       <a href="index.html" class="ajax-link">
