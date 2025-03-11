@@ -7,40 +7,23 @@
   <title>Catacombs</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 
 <body>
-
-  <!-- ✅ Flickering Overlay -->
   <div class="flicker-overlay"></div> 
 
-  <!-- ✅ Main Content -->
-  <div class="content" id="main-content">
-
-    <!-- ✅ Type-to-Reveal Puzzle -->
-    <h1>You must speak the words that were on the note...</h1>
-    <p id="blurred-text">me vivere vita mea</p>
-    <input type="text" id="input-box" placeholder="Type here...">
-
-    <!-- ✅ Audio for Click Sound -->
-    <audio id="click-sound" src="assets/stone.mp3" preload="auto"></audio>
-
-    <!-- ✅ Debugging Buttons (For Testing Purposes) -->
-    <div class="leftbtn">
-      <a href="l8correct.html" class="ajax-link">
-        <button>Correct</button>
-      </a>
+  <div class="content">
+    <!-- ✅ Instruction text on parchment -->
+    <div class="text parchment">
+      <i>Recite what you know...</i>
     </div>
 
-    <div class="rightbtn">
-      <a href="l8incorrect.html" class="ajax-link">
-        <button>Incorrect</button>
-      </a>
+    <!-- ✅ Simple Text Entry Box with Button -->
+    <div class="input-container">
+      <input type="text" id="input-box" placeholder="Type here..." autocomplete="off">
+      <button id="submit-button">Enter</button>
     </div>
-
-  </div> <!-- End of .content -->
-
+  </div>
 </body>
 
 </html>

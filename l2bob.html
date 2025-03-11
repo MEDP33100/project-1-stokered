@@ -11,19 +11,22 @@
 <body>
   <div class="flicker-overlay"></div> 
 
-  <div class="content">
+  <!-- ✅ Everything stays inside .content now -->
+  <div class="content" data-event="rattle">
+    <audio id="rattleSound" src="assets/rattle.mp3"></audio>  <!-- ✅ Audio is inside .content -->
+
     <div class="text">
-      You nervously feel around when your hand makes contact.
-      It's a withered stone, although it feels strangely hollow.
+      <h2>It's a withered stone, although it feels hollow.
       You shake it near your ear and can hear something rattling inside.
-      <!-- play rattling sound effect -->
-      You need to open it, but how? 
-      You could smash it against the wall, but you risk smashing whatever
-      is inside if it's fragile. 
-      Or you could try to scrape it against the stones of the wall,
-      letting friction do its work, although it may take hours.
+      You need to open it, but how?
+      <br>
+      You could smash it, but you might damage something fragile.
+      <br>
+      Or you could try to wear it down against the dry
+      stones of the wall, although it may take hours. </h2>
     </div>
 
+    <!-- ✅ Buttons stay inside .content so they don’t disappear -->
     <div class="leftbtn">
       <a href="l3scrape.html" class="ajax-link">
         <button>Scrape It</button>

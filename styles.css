@@ -132,35 +132,42 @@ a {
     }
 }
 
+/* ✅ Fixed Parchment Padding */
 .text {
     position: absolute;
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 90vw;
+    width: auto;  /* ✅ Allows it to expand with text */
+    max-width: 85vw; /* ✅ Ensures it doesn’t get too wide */
     min-width: 300px;
-    padding: 100px 100px;
-    background: url("assets/parchment.png") no-repeat center;
-    background-size: 100% 100%;
+
+    padding: 50px 80px; /* ✅ Keeps the text inside the parchment */
+    
+    background: url("assets/parchment.png") center / cover no-repeat; /* ✅ Stretches width dynamically */
+    
     text-align: center;
     color: #3a2f1f;
     font-family: "Caudex", serif;
-    font-weight: bolder;
     font-size: 1rem;
     line-height: 1.6;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column; /* ✅ Ensures text stacks properly */
     transition: width 0.3s ease-in-out;
-    overflow: hidden;
+    overflow: hidden; /* ✅ Prevents text from spilling outside */
 }
 
+/* ✅ Responsive Fix for Mobile */
 @media (max-width: 768px) {
     .text {
-        width: 90vw;
-        padding: 40px 60px;
+        max-width: 90vw; /* ✅ Allows smaller screens to adjust */
+        padding: 40px 60px; /* ✅ Adjusted padding for readability */
     }
 }
+
+
 
 #tryAgainContainer {
     position: absolute;
@@ -191,36 +198,130 @@ a {
     transform: scale(1.1);
 }
 
-#blurred-text {
-    font-size: 24px;
-    filter: blur(10px);
-    transition: filter 0.3s ease;
-    opacity: 0.8;
+/* ✅ Parchment Background for Instructions */
+.text.parchment {
+    position: relative;
+    top: 10%;
+    max-width: 80vw;
+    min-width: 300px;
+    padding: 40px;
+    background: url("assets/parchment.png") no-repeat center;
+    background-size: 100% 100%;
+    text-align: center;
+    color: #3a2f1f;
+    font-family: "Caudex", serif;
+    font-size: 1.4rem;
     font-weight: bold;
-    margin-top: 100px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* ✅ Styled Input Box */
-#input-box {
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
-    padding: 10px;
-    font-size: 18px;
+    font-family: "Caudex", serif;
+}
+
+#input-box {
+    padding: 12px;
+    font-size: 20px;
     border: 2px solid white;
     outline: none;
-    border-radius: 5px;
+    font-family: "Caudex", serif;
+    border-radius: 8px;
     text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 280px;
+    margin-right: 10px;
+}
+
+#submit-button {
+    padding: 12px 20px;
+    font-size: 18px;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    font-family: "Caudex", serif;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#submit-button:hover {
     background: black;
     color: white;
-    width: 250px;
 }
 
-/* ✅ Floating Animation for Input Box */
-@keyframes floatInput {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+/* ✅ Perfectly Sized & Centered Note */
+/* ✅ Perfectly Centered Note */
+.note {
+    width: 26vw;  
+    max-width: 280px;
+    height: auto;
+
+    position: absolute;
+    top: 30% !important;  /* ✅ Force it higher */
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;  
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+    z-index: 9999; /* ✅ Ensure it's above other elements */
 }
 
-#input-box {
-    animation: floatInput 2s infinite ease-in-out;
+
+/* ✅ Fix Any Image Issues */
+.note img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ✅ Home Button Styling */
+#home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensures it stays on top */
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-family: "Caudex", serif;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: "Caudex", serif;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ✅ Home Button Hover Effect */
+#home-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+    transform: scale(1.1);
+}
+
+#home-button a {
+    color: white; /* Keeps text white */
+    text-decoration: none; /* Removes underline */
+}
+
+/* ✅ Ensures the link doesn't change color after clicking */
+#home-button a:visited,
+#home-button a:hover,
+#home-button a:active {
+    color: white; /* Forces it to always be white */
+}
+
+/* ✅ Ensure Home Button Looks Good on Mobile */
+@media (max-width: 768px) {
+    #home-button {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
 }
