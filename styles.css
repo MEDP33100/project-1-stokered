@@ -1,0 +1,186 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Caudex", serif;
+}
+
+.caudex-regular {
+    font-family: "Caudex", serif;
+    font-weight: 400;
+}
+
+.caudex-bold {
+    font-family: "Caudex", serif;
+    font-weight: 700;
+}
+
+.caudex-regular-italic {
+    font-family: "Caudex", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.caudex-bold-italic {
+    font-family: "Caudex", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+#video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flicker-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1000;
+}
+
+.solebtn, .leftbtn, .rightbtn {
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solebtn button, .leftbtn button, .rightbtn button {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    font-family: "Caudex", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.solebtn button:hover, .leftbtn button:hover, .rightbtn button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+    transform: scale(1.1);
+}
+
+.leftbtn {
+    left: 10%;
+}
+
+.rightbtn {
+    right: 10%;
+}
+
+.solebtn {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+    .leftbtn, .rightbtn {
+        width: 40vw;
+        min-width: 120px;
+        bottom: 8%;
+    }
+
+    .leftbtn {
+        left: 5%;
+    }
+
+    .rightbtn {
+        right: 5%;
+    }
+
+    .solebtn {
+        bottom: 15%;
+        width: auto;
+    }
+
+    .solebtn button, .leftbtn button, .rightbtn button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+
+.text {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90vw;
+    min-width: 300px;
+    padding: 100px 100px;
+    background: url("assets/parchment.png") no-repeat center;
+    background-size: 100% 100%;
+    text-align: center;
+    color: #3a2f1f;
+    font-family: "Caudex", serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .text {
+        width: 90vw;
+        padding: 40px 60px;
+    }
+}
+
+#tryAgainContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none;
+    pointer-events: auto;
+}
+
+/* "TRY AGAIN" BUTTON FOR KILL PAGES */
+#tryAgainButton {
+    font-size: 1.5rem;
+    font-family: "Caudex", serif;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.3s;
+    border-radius: 8px;
+    opacity: 0;
+}
+
+#tryAgainButton:hover {
+    background: white;
+    transform: scale(1.1);
+}

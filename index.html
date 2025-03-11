@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catacombs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- keep outside ajax loaded content -->
+  <div id="video-container">
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="assets/catacomb.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
+
+  <audio id="gyroscopeSound" src="assets/gyroscope.mp3"></audio>
+
+  <!-- flicker div and try again button -->
+  <div class="flicker-overlay">
+    <div id="tryAgainContainer" style="display: none;">
+        <a href="index.html">
+            <button id="tryAgainButton">Try Again</button>
+        </a>
+    </div>
+  </div> 
+
+  <!-- main ajax content -->
+  <div class="content" id="main-content">
+    <div class="text">
+      Your head throbs as you come to in a damp, claustrophobic hallway. 
+      <br> The stone walls are lined with torches in iron brackets.
+      <br> Who lit the torches? There is no sound of people; all you can hear is your own breath.
+      <br> Behind you is a dead end. The only way is forward.
+      <br> You can't remember your name or your age, only that you shouldn't be here. That you need to get out.
+    </div>
+
+    <div class="solebtn">
+      <a href="firstchoice.html" class="ajax-link">
+        <button>Get Up and Go Forward</button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
 

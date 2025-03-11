@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catacombs</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div id="video-container">
+      <video autoplay muted loop id="bg-video">
+        <source src="assets/catacomb.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  
+    <div class="flicker-overlay"></div> 
+  
+    <div id="main-content">
+      <div class="content">
+        <div class="text">
+          You reach the end of this path. There’s a fork; you can go left or right. 
+          The left is dimly lit, with the sound of water dripping. 
+          The right is slightly darker and completely soundless.
+        </div>
+  
+        <div class="leftbtn">
+            <a href="1left.html" class="ajax-link">
+                <button>Go Left</button>
+            </a>
+        </div>
+  
+        <div class="rightbtn">
+            <a href="1right.html" class="ajax-link">
+                <button>Go Right</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </body>
+  
