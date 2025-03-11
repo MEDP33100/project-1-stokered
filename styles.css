@@ -132,19 +132,18 @@ a {
     }
 }
 
-/* ✅ Fixed Parchment Padding */
 .text {
     position: absolute;
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: auto;  /* ✅ Allows it to expand with text */
-    max-width: 85vw; /* ✅ Ensures it doesn’t get too wide */
+    width: auto;  /* allows it to expand with text */
+    max-width: 85vw; /* ensures it doesn’t get too wide */
     min-width: 300px;
 
-    padding: 50px 80px; /* ✅ Keeps the text inside the parchment */
+    padding: 50px 80px; /* keeps the text inside the parchment */
     
-    background: url("assets/parchment.png") center / cover no-repeat; /* ✅ Stretches width dynamically */
+    background: url("assets/parchment.png") center / cover no-repeat; /* stretches width dynamically */
     
     text-align: center;
     color: #3a2f1f;
@@ -154,16 +153,16 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column; /* ✅ Ensures text stacks properly */
+    flex-direction: column; /* ensures text stacks properly */
     transition: width 0.3s ease-in-out;
-    overflow: hidden; /* ✅ Prevents text from spilling outside */
+    overflow: hidden; /* prevents text from spilling outside */
 }
 
-/* ✅ Responsive Fix for Mobile */
+/* Responsive Fix for Mobile */
 @media (max-width: 768px) {
     .text {
-        max-width: 90vw; /* ✅ Allows smaller screens to adjust */
-        padding: 40px 60px; /* ✅ Adjusted padding for readability */
+        max-width: 90vw; /* allows smaller screens to adjust */
+        padding: 40px 60px; /* adjusted padding for readability */
     }
 }
 
@@ -198,7 +197,7 @@ a {
     transform: scale(1.1);
 }
 
-/* ✅ Parchment Background for Instructions */
+/* Parchment Background for Instructions */
 .text.parchment {
     position: relative;
     top: 10%;
@@ -256,25 +255,22 @@ a {
     color: white;
 }
 
-/* ✅ Perfectly Sized & Centered Note */
-/* ✅ Perfectly Centered Note */
+/* L4NOTE POSITION, ANIMATION IN UNFOLDING CAUSE */
 .note {
     width: 26vw;  
     max-width: 280px;
     height: auto;
 
     position: absolute;
-    top: 30% !important;  /* ✅ Force it higher */
+    top: 30% !important;  /* force it higher */
     left: 50%;
     transform: translate(-50%, -50%);
 
     opacity: 0;  
     transition: transform 0.7s ease-out, opacity 0.7s ease-out;
-    z-index: 9999; /* ✅ Ensure it's above other elements */
+    z-index: 9999; /* ensure it's above other elements */
 }
 
-
-/* ✅ Fix Any Image Issues */
 .note img {
     width: 100%;
     height: auto;
@@ -282,7 +278,7 @@ a {
 }
 
 
-/* ✅ Home Button Styling */
+/* Home Button Styling */
 #home-button {
     position: fixed;
     top: 20px;
@@ -299,7 +295,6 @@ a {
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* ✅ Home Button Hover Effect */
 #home-button:hover {
     background: rgba(255, 255, 255, 0.5);
     color: black;
@@ -307,21 +302,32 @@ a {
 }
 
 #home-button a {
-    color: white; /* Keeps text white */
-    text-decoration: none; /* Removes underline */
+    color: white; 
+    text-decoration: none; 
 }
 
-/* ✅ Ensures the link doesn't change color after clicking */
 #home-button a:visited,
 #home-button a:hover,
 #home-button a:active {
-    color: white; /* Forces it to always be white */
+    color: white; 
 }
 
-/* ✅ Ensure Home Button Looks Good on Mobile */
+/* home button scaling on mobile  */
 @media (max-width: 768px) {
     #home-button {
         font-size: 0.8rem;
         padding: 8px 12px;
     }
 }
+
+#light-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0); /* starts fully transparent */
+    pointer-events: none; /* ensures it doesn’t block interactions */
+    z-index: 500; /* sits above everything except UI elements */
+}
+

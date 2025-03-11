@@ -1,4 +1,4 @@
-// ✅ Ensure Background Video Persistence (Avoids Restarting)
+// BACKGROUND VIDEO FUNCTION
 function ensureVideoPersistence() {
     let videoContainer = document.querySelector("#video-container");
     let video = document.querySelector("#bg-video");
@@ -16,7 +16,7 @@ function ensureVideoPersistence() {
     }
 }
 
-// Enable Gyroscope Sound (Triggers on First Click)
+// MAIN SONG FUNCTION
 function enableGyroscopeSound() {
     const gyroscopeSound = document.getElementById("gyroscopeSound");
 
@@ -29,7 +29,7 @@ function enableGyroscopeSound() {
     }
 }
 
-// Horror Flicker Effect (Keeps Playing Across Pages)
+// FLICKER EFFECT FUNCTION
 function startFlickerEffect() {
     console.log("🔦 Starting flicker effect...");
     const flickerOverlay = document.querySelector(".flicker-overlay");
@@ -52,7 +52,7 @@ function startFlickerEffect() {
     flickerLoop();
 }
 
-// Floating Button Animation (Keeps Hover Effects)
+// FLOATING BUTTON ANIMATION FUNCTION
 function reapplyFloatingAnimation() {
     gsap.to(".leftbtn, .rightbtn, .solebtn", {
         y: -15,
@@ -63,7 +63,7 @@ function reapplyFloatingAnimation() {
     });
 }
 
-// ✅ Play Sound Effects (For Different Pages)
+// PLAY SOUNDS FUNCTION
 function playSound(soundId, volume = 1.0) {
     const sound = document.getElementById(soundId);
     if (sound) {
@@ -74,7 +74,7 @@ function playSound(soundId, volume = 1.0) {
     }
 }
 
-// ✅ Page-Specific Effects (Trigger Sounds & Animations)
+// TRIGGER PAGE SPECIFIC EFFECTS 
 function triggerPageEffects() {
     const contentDiv = document.querySelector("#main-content .content");
     if (!contentDiv) {
@@ -82,8 +82,7 @@ function triggerPageEffects() {
         return;
     }
 
-// ✅ Fade to Black (Used for "rumble" death scene)
-// ✅ Fade to Black (Now Hides Restart Button on Death Screens)
+// FADE TO BLACK -- USED FOR KILL SCENES L8INCORRECT R2GO L3SMASH
 function fadeToBlack(duration = 4) {
     console.log("🎭 Fading screen to black...");
 
@@ -97,27 +96,27 @@ function fadeToBlack(duration = 4) {
         return;
     }
 
-    // ✅ FIX: Move restartButton inside setTimeout to ensure AJAX has loaded it
+    // move restartButton inside setTimeout to ensure ajax has loaded it
     setTimeout(() => {
-        let restartButton = document.getElementById("home-button"); // ✅ Re-grab the button AFTER AJAX loads
+        let restartButton = document.getElementById("home-button"); // regrab the button AFTER ajax loads
         if (restartButton) {
             console.log("🚫 Hiding Restart button on death scene...");
-            restartButton.style.display = "none";  // ✅ Properly hides it now!
+            restartButton.style.display = "none";  
         } else {
             console.warn("⚠️ Restart button not found (might not be loaded yet).");
         }
-    }, 300); // Small delay to ensure AJAX has loaded the button
+    }, 300); // small delay to ensure AJAX has loaded the button
 
-    // Stop flickering before fading
+    // stop flickering before fading
     gsap.killTweensOf(flickerOverlay);
 
-    // Fade gyroscope sound (if playing)
+    // fade main song if playing
     if (gyroscopeSound) {
         gsap.to(gyroscopeSound, { volume: 0, duration: 2, onComplete: () => gyroscopeSound.pause() });
         console.log("🔇 Fading out gyroscope sound...");
     }
 
-    // Fade screen to black
+    // fade screen to black
     gsap.to(flickerOverlay, {
         opacity: 1,
         duration: duration,
@@ -126,27 +125,27 @@ function fadeToBlack(duration = 4) {
         onComplete: () => {
             console.log("🎭 Screen fully faded to black!");
 
-            // Prevent interaction with other buttons
+            // prevent interaction with other buttons
             flickerOverlay.style.pointerEvents = "none";
 
-            // Show "Try Again" button container & allow interaction
+            // show "Try Again" button container & allow interaction
             tryAgainContainer.style.display = "block";
-            tryAgainContainer.style.pointerEvents = "auto"; // Allow clicking ONLY on Try Again button
+            tryAgainContainer.style.pointerEvents = "auto"; // allow clicking ONLY on Try Again button
 
-            // Fade in the button smoothly
+            // fade in the button smoothly
             gsap.to(tryAgainButton, {
                 opacity: 1,
                 duration: 1,
                 ease: "power2.out"
             });
 
-            // Ensure button is clickable
+            // ensure button is clickable
             tryAgainButton.style.cursor = "pointer";
 
             // FORCE A FULL PAGE RELOAD ON CLICK
             tryAgainButton.addEventListener("click", () => {
                 console.log("🔄 Restarting game...");
-                window.location.href = "index.html"; // Force reload
+                window.location.href = "index.html"; // force reload
             });
         }
     });
@@ -165,15 +164,29 @@ function fadeToBlack(duration = 4) {
                 gsap.to(gyroscopeSound, { volume: 0, duration: 2, onComplete: () => gyroscopeSound.pause() });
                 console.log("🔇 Fading out gyroscope sound...");
             }
+
+            let lightOverlay = document.getElementById("light-overlay");
+
+            if (lightOverlay) {
+             console.log("🌞 Gradually brightening the screen...");
+        
+            gsap.to(lightOverlay, { 
+                backgroundColor: "rgba(255, 255, 255, 0.8)",  // fades to bright white
+                duration: 5,  // takes 5 seconds to fully brighten
+                ease: "power2.out"
+             });
+        } else {
+        console.warn("⚠️ Light overlay not found!");
+        }
             break;
 
         case "rattle":
             console.log("⏳ Delaying rattle sound by 1 second...");
     
             setTimeout(() => {
-                playSound("rattleSound", 2.0);  // ✅ Plays after 1 second
+                playSound("rattleSound", 2.0);  // plays after 1 second
                 console.log("🔊 Rattle sound played!");
-            }, 1000); // ⏳ 1000ms (1 second) delay
+            }, 1000); // 1sec delay
 
             break;
 
@@ -191,7 +204,7 @@ function fadeToBlack(duration = 4) {
                 gsap.to(note, { 
                     opacity: 1, 
                     scale: 1, 
-                    top: "50%",  // ✅ Forces it to stay in the center
+                    top: "50%",  // forces it to stay in the center
                     duration: 1, 
                     ease: "power2.out" 
                 });
@@ -223,14 +236,14 @@ function fadeToBlack(duration = 4) {
         case "throw":
             console.log("🪨 Throw event triggered...");
             
-            // ✅ Play both sounds immediately
+            // play "throw" sound immediately
             playSound("throwSound", 1.0);
             playSound("breathingSound", 1.0);
             
-            // ✅ Delay fade to black by 2 seconds
+            // delay fade to black by 2 seconds
             setTimeout(() => {
                 console.log("🎭 Fading to black after 2-second delay...");
-                fadeToBlack(4); // ✅ Fades out over 4 seconds (adjust as needed)
+                fadeToBlack(4); // fades out over 4 seconds
             }, 2000);
             
             break;
@@ -238,7 +251,7 @@ function fadeToBlack(duration = 4) {
 
         
         default:
-            console.log("✅ No special effects for this page.");
+            console.log("No special effects for this page.");
     }
 }
 
@@ -252,18 +265,18 @@ function loadPage(targetPage) {
 
             let newContent = doc.querySelector(".content");
             if (!newContent) {
-                console.error("❌ ERROR: The new page has NO `.content` div!");
+                console.error("ERROR: The new page has NO `.content` div!");
                 return;
             }
 
             let mainContent = document.querySelector("#main-content");
             if (!mainContent) {
-                console.error("❌ ERROR: `#main-content` is missing in index.html!");
+                console.error("ERROR: `#main-content` is missing in index.html!");
                 return;
             }
 
             mainContent.innerHTML = newContent.outerHTML;
-            console.log("✅ Successfully replaced #main-content with new .content!");
+            console.log("Successfully replaced #main-content with new .content!");
 
             gsap.to(".content", { opacity: 1, duration: 0.5 });
 
@@ -306,7 +319,7 @@ function reattachInteractiveElements() {
     });
 }
 
-// ✅ Text Input Validation for l7grid.html (Ensures It Works After AJAX Load)
+// 17GRID USER INPUT LISTENER
 function setupTextValidation() {
     console.log("Setting up text input validation...");
 
@@ -336,25 +349,24 @@ function setupTextValidation() {
     });
 }
 
+// ADD RESTART BUTTON TO ALL PAGES
 function addHomeButton() {
-    // Check if the button already exists (prevents duplicates)
     if (document.getElementById("home-button")) {
         return;
     }
 
-    // Create the button element
+    // create button element
     let homeButton = document.createElement("div");
     homeButton.id = "home-button";
     homeButton.innerHTML = `<a href="index.html" class="ajax-link">🔄 Restart</a>`;
 
-    // Append it to the body
+    // append it to the body
     document.body.appendChild(homeButton);
 }
 
-// Run the function on page load
 document.addEventListener("DOMContentLoaded", () => {
     addHomeButton();
 });
 
-// Initialize Everything on Page Load
+// INITIALIZE EVERYTHING ON PAGE LOAD
 document.addEventListener("DOMContentLoaded", reattachInteractiveElements);
