@@ -38,4 +38,7 @@
 
 ## Future Enhancements
 
-- My original goal was for the user to find a note with four markings on it that could align with a grid, and then to come upon a stone that's patterned like a grid and have to press the markings that match with the note to escape. I tried to make this grid using eventListeners that and user input that matched as either true or false with what I wrote as trueInput, but I couldn't figure out the interactivity element and had to scrap it.
+- The original goal of my narrative was to have users find a piece of paper that has four marked points on it that could kind of resemble colored squares on a 4x4 grid. They would then find a series of stones in the shape of a 4x4 grid and using the note, would have to press the right sequence in order to escape the catacombs. If they pressed the wrong sequence, the rocks would crumble on them and they would…well…die! 
+
+I thought I could do this through creating a 4x4 column through HTML and CSS, then inputting the correct sequence using eventListeners on JS by giving them the correct sequence in a numerically assigned value to each square (i.e. row 1 column 1 would be 1.1, and so on until 4.4). I wanted to restrict it so that only one square could be pressed on each row, so the probability of getting the sequence right would quarter after each completion. If you found the note, it didn’t really matter, but there is a path within my narrative where you can get to this final stage without finding the note, so it would make it hard to guess. I got the CSS grid working, but could not figure out the onClick functionality for some reason, and eventually had to scrap it. 
+
